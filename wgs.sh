@@ -30,5 +30,9 @@ grep ">" ./databases/all_genome.fasta|cut -f 2 -d ">" > ./resultats/association.
 sed "s:>:*\n>:g" ./resultats/genes.fna | sed -n "/partial=00/,/*/p"|grep -v "*" > ./resultats/genes_complet.fna 
 
 
+# 6° Annotation des gènes “complets” contre la banque resfinder avec blastn
+./soft/blastn -query ./resultats/genes_complet.fna -db ./databases/resfinder.fna -outfmt '6 qseqid sseqid pident qcovs evalue' -out ./resultats/annotation_blast.out -evalue 0.001 -qcov_hsp_perc 80 -perc_identity 80 -best_hit_score_edge 0.001
+
+ 
 
 
