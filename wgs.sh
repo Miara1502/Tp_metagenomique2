@@ -23,5 +23,9 @@ grep ">" ./databases/all_genome.fasta|cut -f 2 -d ">" > ./resultats/association.
 #    de KMER 21
 ./soft/megahit -1 EchG_R1.fastq -2 EchG_R2.fastq --k-max 21 --memory 0.4 -o ./resultats/res_megahit
 
+# 4° Prédiction des gènes présents sur les contigs avec prodigal : 
+./soft/prodigal -i ./resultats/res_megahit/final.contigs.fa -d ./resultats/genes.fna
+
+
 
 
