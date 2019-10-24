@@ -26,6 +26,9 @@ grep ">" ./databases/all_genome.fasta|cut -f 2 -d ">" > ./resultats/association.
 # 4° Prédiction des gènes présents sur les contigs avec prodigal : 
 ./soft/prodigal -i ./resultats/res_megahit/final.contigs.fa -d ./resultats/genes.fna
 
+# 5° Séléction des genes complets
+sed "s:>:*\n>:g" ./resultats/genes.fna | sed -n "/partial=00/,/*/p"|grep -v "*" > ./resultats/genes_complet.fna 
+
 
 
 
